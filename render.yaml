@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: covid-predictor
+    env: python
+    buildCommand: pip install -r requirements.txt  # Ensure dependencies are installed
+    startCommand: gunicorn app:app  # Using gunicorn for production environment
+    envVars:
+      - key: FLASK_ENV
+        value: production  # Set the environment to production

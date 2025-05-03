@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>COVID Outcome Prediction</title>
+</head>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+<body>
+    <h2>COVID Outcome Prediction</h2>
+    <form action="/predict" method="POST">
+        <label for="age">Age:</label>
+        <input type="number" name="age" required><br><br>
+
+        <label for="sex">Sex:</label>
+        <select name="sex" required>
+            <option value="1">Female</option>
+            <option value="0">Male</option>
+        </select><br><br>
+
+        <label><input type="checkbox" name="pneumonia" value="1"> Pneumonia</label><br>
+        <label><input type="checkbox" name="diabetes" value="1"> Diabetes</label><br>
+        <label><input type="checkbox" name="copd" value="1"> COPD</label><br>
+        <label><input type="checkbox" name="asthma" value="1"> Asthma</label><br>
+        <label><input type="checkbox" name="immunosuprresed" value="1"> Immunosuppressed</label><br>
+        <label><input type="checkbox" name="hypertension" value="1"> Hypertension</label><br>
+        <label><input type="checkbox" name="cardiovascular" value="1"> Cardiovascular Disease</label><br>
+        <label><input type="checkbox" name="renal_chronic" value="1"> Chronic Renal Disease</label><br>
+        <label><input type="checkbox" name="tobacco" value="1"> Tobacco Use</label><br>
+        <label><input type="checkbox" name="obesity" value="1"> Obesity</label><br>
+        <label><input type="checkbox" name="otherdis" value="1"> Other Diseases</label><br><br>
+
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if prediction_text %}
+        <h3>{{ prediction_text }}</h3>
+    {% endif %}
+</body>
+</html>
